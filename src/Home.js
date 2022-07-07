@@ -1,11 +1,7 @@
 import { useState, useEffect } from "react";
 import { resetToken } from "./Auth";
-import { useSelector, useDispatch } from "react-redux";
-import { bindActionCreators } from "redux";
-import * as actionCreators from "./action-creators/index"
-import {HiOutlineDeviceMobile} from "react-icons/hi"
+import { useSelector } from "react-redux";
 import Footer from "./Footer";
-import {AiFillPlayCircle} from "react-icons/ai"
 
 
 
@@ -16,7 +12,7 @@ import {AiFillPlayCircle} from "react-icons/ai"
 
 
 
-const Home = ({access_token}) => {
+const Home = ({ access_token }) => {
 
     const [pending, setPending] = useState(true);
     const [current_track, setTrack] = useState(null);
@@ -28,20 +24,19 @@ const Home = ({access_token}) => {
     const [featuredPlaylistsItems, setFeaturedPlaylistsItems] = useState([]);
     const [recentlyPlayed, setRecentlyPlayed] = useState(null);
     const [recentfetching, setRecentFetching] = useState(true);
-    const id = localStorage.getItem("device_id")
     const state = useSelector((state) => state);
     const [hoverDisplay, setHoverDisplay] = useState(false);
 
     useEffect(() => {
         const abortCont = new AbortController();
-        Promise.all ([
-            
+        Promise.all([
+
             fetch("https://api.spotify.com/v1/me/top/tracks?limit=8", {
                 signal: abortCont.signal,
                 method: "GET",
                 headers: {
                     'Authorization': `Bearer ${access_token}`,
-                    'Content-Type' : 'application/json'
+                    'Content-Type': 'application/json'
                 }
             }),
             fetch("https://api.spotify.com/v1/me/top/artists?limit=8", {
@@ -49,7 +44,7 @@ const Home = ({access_token}) => {
                 method: "GET",
                 headers: {
                     'Authorization': `Bearer ${access_token}`,
-                    'Content-Type' : 'application/json'
+                    'Content-Type': 'application/json'
                 }
             }),
             fetch("https://api.spotify.com/v1/me/playlists?limit=8", {
@@ -57,7 +52,7 @@ const Home = ({access_token}) => {
                 method: "GET",
                 headers: {
                     'Authorization': `Bearer ${access_token}`,
-                    'Content-Type' : 'application/json'
+                    'Content-Type': 'application/json'
                 }
             }),
             fetch("https://api.spotify.com/v1/browse/new-releases?limit=8", {
@@ -65,7 +60,7 @@ const Home = ({access_token}) => {
                 method: "GET",
                 headers: {
                     'Authorization': `Bearer ${access_token}`,
-                    'Content-Type' : 'application/json'
+                    'Content-Type': 'application/json'
                 }
             }),
             fetch("https://api.spotify.com/v1/browse/featured-playlists?limit=8&locale=en_NG", {
@@ -73,34 +68,33 @@ const Home = ({access_token}) => {
                 method: "GET",
                 headers: {
                     'Authorization': `Bearer ${access_token}`,
-                    'Content-Type' : 'application/json'
+                    'Content-Type': 'application/json'
                 }
             })
         ])
-        .then(responses => {
-            return Promise.all(responses.map(response => {
-                // console.log(response.status)
-                return response.json();
-            }));
-        })
-        .then(data => {
-            // console.log(data)
-            setTopTracks(data[0]);
-            setTopArtists(data[1]);
-            setMyPlaylist(data[2]);
-            setNewReleases(data[3]);
-            setFeaturedPlaylists(data[4])
-            setPending(false)
-        })
-        .catch(error => {
-            console.log(error)
-        })
+            .then(responses => {
+                return Promise.all(responses.map(response => {
+                    // console.log(response.status)
+                    return response.json();
+                }));
+            })
+            .then(data => {
+                setTopTracks(data[0]);
+                setTopArtists(data[1]);
+                setMyPlaylist(data[2]);
+                setNewReleases(data[3]);
+                setFeaturedPlaylists(data[4])
+                setPending(false)
+            })
+            .catch(error => {
+                console.log(error)
+            })
         return () => abortCont.abort();
     }, [])
-  
+
 
     useEffect(() => {   // to display recently played tracks
-        
+
         const abortCont = new AbortController();
 
         fetch("https://api.spotify.com/v1/me/player/recently-played/?limit=8", { // to fetch recently played
@@ -108,28 +102,26 @@ const Home = ({access_token}) => {
             method: "GET",
             headers: {
                 'Authorization': `Bearer ${access_token}`,
-                'Content-Type' : 'application/json'
+                'Content-Type': 'application/json'
             }
         })
-        .then(async res => {
-            if(res.status === 401){
-                resetToken()
-            }
-            else{
-            return await res.json();
-            }
-        })
-        .then(data => {
-            setRecentlyPlayed(data)
-            setRecentFetching(false)
-            // console.log("recent updated")
-        })
-        .catch(err => {
-            if (err.name === 'AbortError'){
-                // console.log('fetch aborted')
-            }
-            setRecentFetching(false)
-        })
+            .then(async res => {
+                if (res.status === 401) {
+                    resetToken()
+                }
+                else {
+                    return await res.json();
+                }
+            })
+            .then(data => {
+                setRecentlyPlayed(data)
+                setRecentFetching(false)
+            })
+            .catch(err => {
+                if (err.name === 'AbortError') {
+                }
+                setRecentFetching(false)
+            })
 
         return () => abortCont.abort();
     }, [])
@@ -138,29 +130,15 @@ const Home = ({access_token}) => {
     useEffect(() => {
         setTrack(JSON.parse(localStorage.getItem("playing")))
     }, [localStorage.getItem("trackID")])
-    
-    
+
+
     useEffect(() => {   // to load up the home page
-        (featuredPlaylists && setFeaturedPlaylistsItems(featuredPlaylists.playlists.items))      
+        (featuredPlaylists && setFeaturedPlaylistsItems(featuredPlaylists.playlists.items))
     }, [pending])
 
-    // const hoverDisplay1 = () => {
-    //     return (
-    //         <div className="hoverdisplay1">
-    //             Hello
-    //         </div>
-    //     )
-    // }
-    
 
     return (
         <div className="homepage">
-            {/* {!is_active ? (
-                <b> Instance not active. Transfer your playback using your Spotify app </b>
-            ):(
-                <b>Connected</b>
-            )} */}
-            {/* <button onClick={featuredPlaylist}>Featured Playlist</button> */}
             <div className="sections">
                 {recentfetching && <div>Loading...</div>}
                 {recentlyPlayed && (
@@ -170,12 +148,11 @@ const Home = ({access_token}) => {
                             <div>SEE ALL</div>
                         </div>
                         <div className="container">
-                            {/* {hoverDisplay ? (<AiFillPlayCircle className="overPlay"/>):(null)} */}
                             {recentlyPlayed.items.map((recent) => (
                                 <div className="recent view" key={recent.played_at} onMouseEnter={() => setHoverDisplay(true)} onMouseLeave={() => setHoverDisplay(false)}>
                                     <div>
                                         <img src={recent.track.album.images[0].url} className="cover" alt="" />
-                                        
+
                                     </div>
                                     <div className="details">{recent.track.name}</div>
                                     <div className="more-details">{recent.track.artists[0].name}</div>
@@ -187,7 +164,6 @@ const Home = ({access_token}) => {
             </div>
 
             <div className="sections">
-                {/* {pending && <div>Loading...</div>} */}
                 {featuredPlaylists && (
                     <div className="featured-playlists bowl">
                         <div className="header">
@@ -267,7 +243,7 @@ const Home = ({access_token}) => {
             </div>
 
             <div className="sections">
-                {newReleases &&(
+                {newReleases && (
                     <div className="releases bowl">
                         <div className="header">
                             <b className="heading">New Releases</b>

@@ -1,17 +1,17 @@
-import {Link} from  "react-router-dom"
-import {AiOutlineUser, AiOutlineCaretDown, AiOutlineCaretUp} from "react-icons/ai"
-import {IoIosSettings, IoIosLogOut} from "react-icons/io"
-import {MdOutlineManageAccounts, MdAccountCircle} from "react-icons/md"
-import {GoPackage} from "react-icons/go"
-import {BiSupport} from "react-icons/bi"
-import {FiDownloadCloud} from "react-icons/fi"
+import { Link } from "react-router-dom"
+import { AiOutlineUser, AiOutlineCaretDown, AiOutlineCaretUp } from "react-icons/ai"
+import { IoIosLogOut } from "react-icons/io"
+import { MdOutlineManageAccounts, MdAccountCircle } from "react-icons/md"
+import { GoPackage } from "react-icons/go"
+import { BiSupport } from "react-icons/bi"
+import { FiDownloadCloud } from "react-icons/fi"
 import { useState } from "react"
 import FetchData from "./FetchData"
 
-const TopNavbar = ({logout}) => {
+const TopNavbar = ({ logout }) => {
 
     const [state, setState] = useState(false);
-    const {data: me, fetching: fetching_me, error: error_me} = FetchData("https://api.spotify.com/v1/me");
+    const { data: me, fetching: fetching_me, error: error_me } = FetchData("https://api.spotify.com/v1/me");
 
 
     return (
@@ -22,35 +22,35 @@ const TopNavbar = ({logout}) => {
             </div>
             <button className="top-right" onClick={() => setState((prevState) => !prevState)}>
                 <div className="profile-back">
-                    <AiOutlineUser className="profile"/>
+                    <AiOutlineUser className="profile" />
                 </div>
                 {me && <div className="profile-name">{me.display_name}</div>}
-                {state ? (<div><AiOutlineCaretUp/></div>) : (<div><AiOutlineCaretDown/></div>)}
+                {state ? (<div><AiOutlineCaretUp /></div>) : (<div><AiOutlineCaretDown /></div>)}
                 {state ? (
                     <div className="dropdown">
                         <Link to="/profile" className="dropdown-menu">
-                            <div>Account</div> 
-                            <div><MdOutlineManageAccounts className="dropdown-icon"/></div> 
+                            <div>Account</div>
+                            <div><MdOutlineManageAccounts className="dropdown-icon" /></div>
                         </Link>
                         <Link to="/profile" className="dropdown-menu">
-                            <div>Profile</div> 
-                            <div><MdAccountCircle className="dropdown-icon"/></div> 
+                            <div>Profile</div>
+                            <div><MdAccountCircle className="dropdown-icon" /></div>
                         </Link>
                         <Link to="/profile" className="dropdown-menu">
-                            <div>Premium</div> 
-                            <div><GoPackage className="dropdown-icon"/></div> 
+                            <div>Premium</div>
+                            <div><GoPackage className="dropdown-icon" /></div>
                         </Link>
                         <Link to="/profile" className="dropdown-menu">
-                            <div>Support</div> 
-                            <div><BiSupport className="dropdown-icon"/></div> 
+                            <div>Support</div>
+                            <div><BiSupport className="dropdown-icon" /></div>
                         </Link>
                         <Link to="/profile" className="dropdown-menu">
-                            <div>Download</div> 
-                            <div><FiDownloadCloud className="dropdown-icon"/></div> 
+                            <div>Download</div>
+                            <div><FiDownloadCloud className="dropdown-icon" /></div>
                         </Link>
-                        <Link to="/" onClick={() => {logout()}} className="dropdown-menu">
-                            <div>Logout</div> 
-                            <div><IoIosLogOut className="dropdown-icon" /></div> 
+                        <Link to="/" onClick={() => { logout() }} className="dropdown-menu">
+                            <div>Logout</div>
+                            <div><IoIosLogOut className="dropdown-icon" /></div>
                         </Link>
                     </div>
                 ) : (null)}

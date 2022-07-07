@@ -1,12 +1,12 @@
-import {FaUserAlt} from "react-icons/fa"
+import { FaUserAlt } from "react-icons/fa"
 import { useState } from "react"
-import { AiOutlineDown, AiOutlineUp} from "react-icons/ai"
-import {Link} from  "react-router-dom"
-import { HiOutlineLogin} from "react-icons/hi"
+import { AiOutlineDown, AiOutlineUp } from "react-icons/ai"
+import { Link } from "react-router-dom"
+import { HiOutlineLogin } from "react-icons/hi"
 import { MdOutlineManageAccounts } from "react-icons/md"
 import { BsInstagram, BsTwitter } from "react-icons/bs"
 import { FaFacebookF } from "react-icons/fa"
-import {requestAuth} from "./Auth";
+import { requestAuth } from "./Auth";
 
 
 
@@ -14,11 +14,11 @@ const Welcome = () => {
 
     const [state, setState] = useState(false);
 
-    return ( 
+    return (
         <div className="welcome">
             <div className="welcome-top-nav">
                 <div className="company-detail">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ057HBKYGvHGqFSigWBSn_PZFXRsICls11lqrMyp5pxDhgaQ2k35bS7eZzlZ6rUHp7Y_Y&usqp=CAU" />
+                    <img src={require("./Spotify_App_Logo_Welcome1.png")} />
                     <h1>Spotify</h1>
                 </div>
                 <div className="nav-details">
@@ -26,25 +26,10 @@ const Welcome = () => {
                     <div className="nav-detail">Support</div>
                     <div className="nav-detail">Download</div>
                     <div className="nav-vert">|</div>
-                    <div className="top-last"  onClick={() => setState((prevState) => !prevState)}> 
-                        <div><FaUserAlt className="top-nav-icon"/></div>
+                    <div className="top-last" onClick={() => setState((prevState) => !prevState)}>
+                        <div><FaUserAlt className="top-nav-icon" /></div>
                         <div className="top-profile">Profile</div>
-                        {state ? (<div className="top-nav-dir"><AiOutlineUp/></div>) : (<div className="top-nav-dir"><AiOutlineDown/></div>)}
-                        {/* {state ? (
-                            <div>
-                                <div className="welcome-triangle"></div>
-                                <div className="welcome-dropdown">
-                                    <Link to="/" className="welcome-menu account">
-                                        <div>Account</div> 
-                                        <div><MdOutlineManageAccounts className="dropdown-icon"/></div> 
-                                    </Link>
-                                    <Link to="/login" className="welcome-menu log">
-                                        <div>Login</div> 
-                                        <div><HiOutlineLogin className="dropdown-icon" /></div> 
-                                    </Link>
-                                </div>
-                            </div>
-                        ) : (null)} */}
+                        {state ? (<div className="top-nav-dir"><AiOutlineUp /></div>) : (<div className="top-nav-dir"><AiOutlineDown /></div>)}
                     </div>
                 </div>
             </div>
@@ -52,7 +37,7 @@ const Welcome = () => {
                 <div className="body-right"></div>
                 <div className="body-left2"></div>
                 <div className="body-left1"><div className="body-intercept"></div></div>
-                
+
                 <div className="welcome-body-text">
                     <div className="body-first">Listen, Laugh, Enjoy!</div>
                     <div className="body-second">Pickup your music right where you left off</div>
@@ -63,7 +48,7 @@ const Welcome = () => {
                 <div className="footer-wrapper">
                     <div className="footer-top">
                         <div className="company-logo">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ057HBKYGvHGqFSigWBSn_PZFXRsICls11lqrMyp5pxDhgaQ2k35bS7eZzlZ6rUHp7Y_Y&usqp=CAU" />
+                            <img src={require("./Spotify_App_Logo_Welcome2.png")} />
                             <h1>Spotify</h1>
                         </div>
                         <div className="footer-top-left">
@@ -95,30 +80,30 @@ const Welcome = () => {
                         </div>
                         <div className="icons">
                             <div className="icon-back">
-                                <div className="text"><BsInstagram/></div>
+                                <div className="text"><BsInstagram /></div>
                             </div>
                             <div className="icon-back">
-                                <div className="text"><BsTwitter/></div>
+                                <div className="text"><BsTwitter /></div>
                             </div>
                             <div className="icon-back">
-                                <div className="text"><FaFacebookF/></div>
+                                <div className="text"><FaFacebookF /></div>
                             </div>
                         </div>
                     </div>
                     {state ? (
-                    <div>
-                        <div className="welcome-triangle"></div>
-                        <div className="welcome-dropdown">
-                            <Link to="/profile" className="welcome-menu account">
-                                <div>Account</div> 
-                                <div><MdOutlineManageAccounts className="dropdown-icon"/></div> 
-                            </Link>
-                            <Link to="/login" className="welcome-menu log">
-                                <div>Login</div> 
-                                <div><HiOutlineLogin className="dropdown-icon" /></div> 
-                            </Link>
+                        <div>
+                            <div className="welcome-triangle"></div>
+                            <div className="welcome-dropdown">
+                                <Link to="/profile" className="welcome-menu account">
+                                    <div>Account</div>
+                                    <div><MdOutlineManageAccounts className="dropdown-icon" /></div>
+                                </Link>
+                                <Link to="/login" className="welcome-menu log">
+                                    <div>Login</div>
+                                    <div><HiOutlineLogin className="dropdown-icon" /></div>
+                                </Link>
+                            </div>
                         </div>
-                    </div>
                     ) : (null)}
                     <div className="footer-bottom">
                         <div className="footer-bottom-left">
@@ -135,7 +120,7 @@ const Welcome = () => {
                 </div>
             </div>
         </div>
-     );
+    );
 }
- 
+
 export default Welcome;
