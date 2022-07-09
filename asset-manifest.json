@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/Spotify-web/static/css/main.6dcf7aa7.css",
-    "main.js": "/Spotify-web/static/js/main.9fd09469.js",
-    "static/media/Spotify_App_Logo_Login.png": "/Spotify-web/static/media/Spotify_App_Logo_Login.eea99b05fcb491766fe1.png",
-    "index.html": "/Spotify-web/index.html",
-    "main.6dcf7aa7.css.map": "/Spotify-web/static/css/main.6dcf7aa7.css.map",
-    "main.9fd09469.js.map": "/Spotify-web/static/js/main.9fd09469.js.map"
+    "main.css": "/spotify-web/static/css/main.6dcf7aa7.css",
+    "main.js": "/spotify-web/static/js/main.beaf7133.js",
+    "static/media/Spotify_App_Logo_Login.png": "/spotify-web/static/media/Spotify_App_Logo_Login.eea99b05fcb491766fe1.png",
+    "index.html": "/spotify-web/index.html",
+    "main.6dcf7aa7.css.map": "/spotify-web/static/css/main.6dcf7aa7.css.map",
+    "main.beaf7133.js.map": "/spotify-web/static/js/main.beaf7133.js.map"
   },
   "entrypoints": [
     "static/css/main.6dcf7aa7.css",
-    "static/js/main.9fd09469.js"
+    "static/js/main.beaf7133.js"
   ]
 }
