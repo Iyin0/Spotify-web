@@ -90,7 +90,7 @@ const Home = ({ access_token }) => {
                 console.log(error)
             })
         return () => abortCont.abort();
-    }, [])
+    }, [access_token])
 
 
     useEffect(() => {   // to display recently played tracks
@@ -124,7 +124,7 @@ const Home = ({ access_token }) => {
             })
 
         return () => abortCont.abort();
-    }, [])
+    }, [access_token])
 
 
     useEffect(() => {

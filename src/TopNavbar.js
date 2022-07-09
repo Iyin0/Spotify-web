@@ -11,7 +11,7 @@ import FetchData from "./FetchData"
 const TopNavbar = ({ logout }) => {
 
     const [state, setState] = useState(false);
-    const { data: me, fetching: fetching_me, error: error_me } = FetchData("https://api.spotify.com/v1/me");
+    const { data: me } = FetchData("https://api.spotify.com/v1/me");
 
 
     return (

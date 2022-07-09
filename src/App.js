@@ -49,7 +49,6 @@ function App() {
                 </Routes>
               </div>
             </div>
-            {/* <RightNavbar /> */}
           </div>
           <BottomNavbar access_token={access_token} />
         </div>

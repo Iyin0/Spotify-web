@@ -9,7 +9,7 @@ const Search = () => {
     const [searchKey, setSearchKey] = useState("");
     const type = ["artist", "track", "album", "playlist", "show", "episode"]
     const artist_uri = `https://api.spotify.com/v1/search?q=${searchKey}&type=${type}&limit=8`;
-    const { data: result, fetching, error, status } = FetchData(artist_uri)
+    const { data: result, fetching } = FetchData(artist_uri)
     const { data: categories, fetching: getting_categories, error: error_categories } = FetchData("https://api.spotify.com/v1/browse/categories?limit=45")
 
 
@@ -122,9 +122,9 @@ const Search = () => {
                                     <div className="albums_list view" key={album.id}>
                                         <div>{album.images.length ? <img src={album.images[0].url} alt="" /> : <div>No Image</div>}</div>
                                         <div className="details">{album.name}</div>
-                                        {album.artists.map(artists => {
+                                        {album.artists.map(artists => (                     // could be wrapped in {}
                                             <div className="details">{artists.name}</div>
-                                        })}
+                                        ))}
                                     </div>
                                 ))}
                             </div>

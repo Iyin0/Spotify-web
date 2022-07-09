@@ -15,36 +15,36 @@ const FetchData = (uri) => {
             method: "GET",
             headers: {
                 'Authorization': `Bearer ${access_token}`,
-                'Content-Type' : 'application/json'
+                'Content-Type': 'application/json'
             }
         })
-        .then(async res => {
-            if (res.status === 401){
-                resetToken();
-            }
-            setStatus(res.status);
-            if(!res.ok) {
-                throw Error('Unable to fetch the required data');
-            }
-            return await res.json();
-        })
-        .then(data => {
-            setData(data);
-            setFetching(false);
-            setError(null);
-        })
-        .catch(err => {
-            if (err.name === 'AbortError'){
+            .then(async res => {
+                if (res.status === 401) {
+                    resetToken();
+                }
+                setStatus(res.status);
+                if (!res.ok) {
+                    throw Error('Unable to fetch the required data');
+                }
+                return await res.json();
+            })
+            .then(data => {
+                setData(data);
+                setFetching(false);
+                setError(null);
+            })
+            .catch(err => {
+                if (err.name === 'AbortError') {
 
-            }
-            setFetching(false);
-            setError(err.message);                
-        })
+                }
+                setFetching(false);
+                setError(err.message);
+            })
 
         return () => abortCont.abort();
-    }, [uri]);
+    }, [uri, access_token]);
 
-    return { data, fetching, error, status}
+    return { data, fetching, error, status }
 }
 
 export default FetchData;

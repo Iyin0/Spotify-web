@@ -13,7 +13,7 @@ const Login = () => {
     return (
         <div>
             <nav className="loginNav">
-                <img src={require("./Spotify_App_Logo_Login.png")} />
+                <img src={require("./Spotify_App_Logo_Login.png")} alt="Spotify img" />
                 <h1>Spotify</h1>
             </nav>
             <div className="login">

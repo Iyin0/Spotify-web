@@ -8,13 +8,13 @@ import FetchData from "./FetchData";
 
 const LeftNavbar = ({ logout }) => {
 
-    const { data: myPlaylist, fetching: fetching_myPlaylists, error: error_myPlaylist } = FetchData("https://api.spotify.com/v1/me/playlists");
-    const { data: myAlbums, fetching: fetching_myAlbums, error: error_myAlbums } = FetchData("https://api.spotify.com/v1/me/albums");
+    const { data: myPlaylist } = FetchData("https://api.spotify.com/v1/me/playlists");
+    const { data: myAlbums } = FetchData("https://api.spotify.com/v1/me/albums");
 
     return (
         <nav className="left">
             <div className="logo">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ057HBKYGvHGqFSigWBSn_PZFXRsICls11lqrMyp5pxDhgaQ2k35bS7eZzlZ6rUHp7Y_Y&usqp=CAU" />
+                <img src={require("./Spotify_App_Logo_LeftNAv.png")} alt="Spotify img" />
                 <h1>Spotify</h1>
             </div>
             <div className="pages">
