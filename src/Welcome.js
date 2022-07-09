@@ -18,7 +18,7 @@ const Welcome = () => {
         <div className="welcome">
             <div className="welcome-top-nav">
                 <div className="company-detail">
-                    <img src={require("./Spotify_App_Logo_Welcome1.png")} alt="Spotify logo 1" />
+                    <img src={require("./images/Spotify_App_Logo_Welcome1.png")} alt="Spotify logo 1" />
                     <h1>Spotify</h1>
                 </div>
                 <div className="nav-details">
@@ -48,7 +48,7 @@ const Welcome = () => {
                 <div className="footer-wrapper">
                     <div className="footer-top">
                         <div className="company-logo">
-                            <img src={require("./Spotify_App_Logo_Welcome2.png")} alt="Spotify logo 2" />
+                            <img src={require("./images/Spotify_App_Logo_Welcome2.png")} alt="Spotify logo 2" />
                             <h1>Spotify</h1>
                         </div>
                         <div className="footer-top-left">

@@ -14,7 +14,7 @@ const LeftNavbar = ({ logout }) => {
     return (
         <nav className="left">
             <div className="logo">
-                <img src={require("./Spotify_App_Logo_LeftNAv.png")} alt="Spotify img" />
+                <img src={require("./images/Spotify_App_Logo_LeftNAv.png")} alt="Spotify img" />
                 <h1>Spotify</h1>
             </div>
             <div className="pages">
