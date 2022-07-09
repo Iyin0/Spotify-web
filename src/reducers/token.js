@@ -1,21 +1,27 @@
-const initState = {
-    access_token: " ",
-    refresh_token: " "
-};
+import { createSlice } from "@reduxjs/toolkit";
 
-const token = (state = initState, action) => {
-    switch (action.type) {
-        case "ADD_ACCESS_TOKEN":
-            return state.access_token = action.payload;
-        case "REMOVE_ACCESS_TOKEN":
-            return state.access_token = " ";
-        case "ADD_REFRESH_TOKEN":
-            return state.refresh_token = action.payload;
-        case "REMOVE_REFRESH_TOKEN":
-            return state.refresh_token = " ";
-        default:
-            return state;
+export const requestToken = createSlice({
+    name: 'token',
+    initialState: {
+        access_token: " ",
+        refresh_token: " ",
+    },
+    reducers: {
+        add_accessToken: (state, action) => {
+            state.access_token = action.payload
+        },
+        remove_accessToken: (state) => {
+            state.access_token = " "
+        },
+        add_refreshToken: (state, action) => {
+            state.refresh_token = action.payload
+        },
+        remove_refreshToken: (state) => {
+            state.refresh_token = " "
+        }
     }
-}
+})
 
-export  default token;
+export const { add_accessToken, remove_accessToken, add_refreshToken, remove_refreshToken } = requestToken.actions
+
+export default requestToken.reducer

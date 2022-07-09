@@ -11,6 +11,7 @@ import { onLoad, getAccessToken, logout } from "./Auth";
 import LeftNavbar from "./LeftNavbar";
 import LikedSongs from "./LikedSongs";
 import Welcome from "./Welcome";
+import { useSelector } from 'react-redux'
 
 
 function App() {
@@ -20,7 +21,7 @@ function App() {
     getAccessToken();
   }, [])
 
-  let access_token = localStorage.getItem("access_token")
+  const access_token = useSelector((state) => state.access_token)
 
 
   return (
