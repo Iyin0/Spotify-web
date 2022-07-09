@@ -1,9 +1,6 @@
-// import { useDispatch } from 'react-redux'
-// import { add_accessToken, add_refreshToken, remove_accessToken, remove_refreshToken } from './reducers/token'
-
 let spotify_client_id = '914b034c51f548e48a0fe061861beee7';
 let spotify_client_secret = 'c15efda2da994aa4b85268537802e161';
-const redirect_uri = "http://localhost:3000";
+const redirect_uri = "https://iyin0.github.io/spotify-web";
 const auth_endpoint = "https://accounts.spotify.com/authorize?";
 const token_endpoint = 'https://accounts.spotify.com/api/token';
 const response_type = 'code';
@@ -11,7 +8,6 @@ const show_dialog = false;
 let code = null;
 const grant_type = 'authorization_code';
 const grant_refresh_type = 'refresh_token'
-// const dispatch = useDispatch();
 
 
 const generateState = (length) => {
