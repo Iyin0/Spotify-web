@@ -16,10 +16,10 @@ import { useSelector } from 'react-redux'
 
 function App() {
 
-  useEffect(() => {
-    onLoad();
-    getAccessToken();
-  }, [])
+  // useEffect(() => {
+  //   onLoad();
+  //   getAccessToken();
+  // }, [])
 
   const access_token = useSelector((state) => state.access_token)
 
