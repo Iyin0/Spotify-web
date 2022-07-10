@@ -1,5 +1,5 @@
-// let spotify_client_id = '914b034c51f548e48a0fe061861beee7';
-// let spotify_client_secret = 'c15efda2da994aa4b85268537802e161';
+// let spotify_client_id = ' ';
+// let spotify_client_secret = ' ';
 // const redirect_uri = "https://iyin0.github.io/spotify-web"; // "http://localhost:3000/"
 // const auth_endpoint = "https://accounts.spotify.com/authorize?";
 // const token_endpoint = 'https://accounts.spotify.com/api/token';
