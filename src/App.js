@@ -1,6 +1,6 @@
 import TopNavbar from "./TopNavbar";
 import BottomNavbar from "./BottomNavbar";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, HashRouter } from "react-router-dom";
 import Home from './Home';
 import Profile from './Profile';
 import Search from './Search';
@@ -25,7 +25,7 @@ function App() {
 
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       {!access_token ? (
         <div className="Login-App">
           <Routes>
@@ -54,7 +54,7 @@ function App() {
           <BottomNavbar access_token={access_token} />
         </div>
       )}
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
