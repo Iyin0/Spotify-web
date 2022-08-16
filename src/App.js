@@ -7,7 +7,7 @@ import Search from './Search';
 import Settings from './Settings';
 import Login from './Login';
 import { useEffect } from "react";
-import { onLoad, getAccessToken, logout } from "./Auth";
+import { onLoad, getAccessToken, logout, access_token, refresh_token } from "./Auth";
 import LeftNavbar from "./LeftNavbar";
 import LikedSongs from "./LikedSongs";
 import Welcome from "./Welcome";
